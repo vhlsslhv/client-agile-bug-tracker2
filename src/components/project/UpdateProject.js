@@ -15,6 +15,7 @@ class UpdateProject extends React.Component {
       id: response.data._id,
       title: response.data.title,
       description: response.data.description,
+      
     });
   }
 
@@ -35,6 +36,7 @@ class UpdateProject extends React.Component {
     const { title, description } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
+
         <label>Title</label>
         <input
           type="text"
@@ -42,14 +44,17 @@ class UpdateProject extends React.Component {
           onChange={this.handleChange}
           value={title}
         />
+
         <label>Description</label>
-        <input
+        <textarea value={description} onChange={this.handleChange} name="description" class="form-control" aria-label="With textarea"></textarea>
+        {/* <input
           type="text"
           name="description"
           onChange={this.handleChange}
           value={description}
-        />
-        <button type="submit">Update</button>
+        /> */}
+        
+        <button type="submit" class="btn btn-outline-success">Update</button>
       </form>
     );
   }
