@@ -29,8 +29,8 @@ body, html, .App, #root, .auth-wrapper {
 .forgot-password,
 .forgot-password  {
   text-align: center;
-  font-size: 0.81rem;  /*=13px */ 
-  padding-top: 1rem;
+  font-size: 0.9rem;  
+  padding-top: 2rem;
   color: #7f7d7d;
   
 }
@@ -44,7 +44,7 @@ body, html, .App, #root, .auth-wrapper {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0;
   margin-left: 28rem;
 }
 
@@ -74,7 +74,7 @@ body, html, .App, #root, .auth-wrapper {
 
 
 .form-group-button{
-  padding-top: 1rem;
+  padding-top: 2rem;
   text-align: center;
 }
 
@@ -86,7 +86,7 @@ body, html, .App, #root, .auth-wrapper {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 0;
   margin-left: 28rem;
 }
 

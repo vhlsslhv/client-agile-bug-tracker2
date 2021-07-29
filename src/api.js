@@ -8,6 +8,9 @@ const baseURL = `${process.env.REACT_APP_SERVER_HOSTNAME}/api`
 export const getAllProjects = () => {
   return axios.get(`${baseURL}/projects`);
 };
+export const getAllIssues = () => {
+  return axios.get(`${baseURL}/issues`);
+};
 
 export const getAllBoards = () => {
   return axios.get(`${baseURL}/boards`);
@@ -15,6 +18,9 @@ export const getAllBoards = () => {
 
 export const addProject = (project) => {
   return axios.post(`${baseURL}/projects`, project, { withCredentials: true });
+};
+export const getIssue = (issueId) => {
+  return axios.get(`${baseURL}/issues/${issueId}`);
 };
 
 export const getProject = (projectId) => {

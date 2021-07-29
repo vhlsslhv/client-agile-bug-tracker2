@@ -1,37 +1,79 @@
 import React from "react";
-import JiraApi from 'jira-client';
+import { getProject, deleteProject } from "../../api";
+import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
+import Board from "../Board";
+import {getAllIssues} from "../../api"
 
+
+/*         id: "",
+        title: "",
+        description: "",
+        attachment: "",
+        comments: [],
+        status: "",   
+        dueDate: "", 
+        reporter: "",
+        assignee: "",  */
 
 class Issue extends React.Component {
     state = {
-        jiraIssue: null
-    }
-    componentDidMount() {
-        const jira = new JiraApi({
-            protocol: 'https',
-            host: 'jira.somehost.com',
-            username: 'username',
-            password: 'password',
-            apiVersion: '2',
-            strictSSL: true
-          });
-        jira.findIssue(12) //Id to be found?
-        .then(issue => {
-          console.log(`Status: ${issue.fields.status.name}`);
-          this.setState({ jiraIssue: issue })
-        })
-        .catch(err => {
-          console.error(err);
+        issues:[],
+
+    };
+
+    async componentDidMount(){
+        const response = await getAllIssues();
+        this.setState({
+            issues: response.data,
         });
     }
+
     render() {
         return (
             <>
-            {this.state.jiraIssue ? <p>{this.state.jiraIssue}</p> : <p>
-                No issue</p>}
+            <h2>Issues test</h2>
+            <ul>
+            {this.state.issues.map((issue) => {
+            return (
+            <li key={issue._id}>
+                <NavLink to={`/issues/${issue._id}`}>
+                    {issue.title}
+                </NavLink>
+            </li>   
+            );
+            }
+            )}
+            </ul>
             </>
         )
     }
+    
+    
 }
+
 export default Issue;
+{/*                 <div className="container">
+                    <div className="issue-card-body">
+                        <div>Issue Title</div>
+                        <div>Issue Attachment</div>
+                        <div>Issue description</div>
+                    </div>
+                    <div className="issue-card-details">
+                        <div>Assignee</div>
+                        <div>Reporter</div>
+                        <div>Due date</div>
+                        <div class="btn-group">
+                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Assign to a board
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>To do</li>
+                                <li>In proggress</li>
+                                <li>Done</li>
+                                <li>Backlog</li>
+                                <li>Emergency</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> */}

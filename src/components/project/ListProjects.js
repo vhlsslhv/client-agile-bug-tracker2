@@ -22,26 +22,31 @@ class ListProjects extends React.Component {
     const { projects } = this.state;
     return (
       <>
-        <div class="container-fluid">
-          <div class="col-md-6 row">
-            <h2>List of Projects</h2>
-            <ul >
-              {projects.map((project) => {
-                return (
-                  <li key={project._id}>
-                    <div class="project-card">
-                      <h5 class="card-title"><NavLink to={`/projects/${project._id}`}>
+        <div className="container">
+          <div className="row">
+            <div class="col-md-4">
+              <h2 className="d-flex justify-content-center my-4">List of Projects</h2>
+              <div className="flexbox-project-cards" style={{ display: "inline-flex" }} >
+                {projects.map((project) => {
+                  return (
+                    <div className="project-card align-items-space-b my-3 mx-3" key={project._id}>
+                      <h5 className="card-title text-center my-1"><NavLink to={`/projects/${project._id}`}>
                         {project.title}
                       </NavLink> </h5>
-                      <img src="..." class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      {/* <img height="100px" width="100px" src={`/projects/${project._id}/${project.imageUrl}`} class="card-img-top" alt="project logo" /> */}
+                      <div className="card-body text-center">
+                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div className="card-button">
+                          <div className="btn btn-primary">
+                            <a style={{ color: "azure" }} href={`/projects/${project._id}`}>View Issues</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </li>
-                );
-              })}
-            </ul>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </>

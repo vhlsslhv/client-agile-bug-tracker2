@@ -3,6 +3,7 @@ import { getProject, deleteProject } from "../../api";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import Board from "../Board";
+import IssueBoard from "../issues/IssueBoard";
 
 
 class ProjectDetails extends React.Component {
@@ -44,28 +45,34 @@ class ProjectDetails extends React.Component {
         const { id, title, description, imageUrl, boards } = this.state;
         return (
             <>
-                <div className="container-md-fluid">
-                    <div className="row">
-                        <div className="col-md-6">
+                <div className="row">
+                    <div className="container-md-fluid">
+                        <div className="col-md-4">
                             <div className="proj-details">
                                 <div class="d-grid gap-3">
-                                    <div class="    m-3 p-1 bg-light border"><h4>Project Name: </h4> <h6>{title}</h6></div>
+                                    <div class="mx-3 p-1 bg-light border"><h4>Project Name: </h4> <h6>{title}</h6></div>
                                     <div class="mx-3 p-1 bg-light border"><h4>Project Description: </h4> <h6>{description}</h6></div>
-                                    
+
                                 </div>
-                                
-                                
+
+
                                 {imageUrl && (<img style={{ width: "100px" }} src={imageUrl} alt="project" />)}
                             </div>
                         </div>
-                        <div className="col-md-6">
-                            <div class="proj-details-buttons">
+                        <div class="proj-details-buttons d-flex bd-highlight mb-3">
+                            <div class="ms-auto p-2 bd-highlight">
                                 <button className="btn btn-primary" onClick={this.handleCreateIssue}>Create new issue</button>  
+                            </div> 
+                            <div class="p-2 bd-highlight">
                                 <button className="btn btn-outline-secondary" onClick={() => {
                                     this.props.history.push(`/projects/${id}/edit`);
-                                }}> Edit project</button>   {/* Add handleCreate */}
+                                    }}> Edit project
+                                </button>
+                            </div>
+                            <div class="p-2 bd-highlight">
                                 <button className="btn btn-outline-danger" onClick={this.handleDeleteProject}>Delete project</button>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -74,6 +81,7 @@ class ProjectDetails extends React.Component {
                         <div className="col-md-12">
                             <div class="d-flex justify-content-around">
                                 <Board boards={boards} />
+                                {/* <IssueBoard/> */}
                             </div>
                         </div>
                     </div>
@@ -85,3 +93,10 @@ class ProjectDetails extends React.Component {
 
 
 export default ProjectDetails;
+
+
+<div class="d-flex bd-highlight mb-3">
+    <div class="me-auto p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+</div>
