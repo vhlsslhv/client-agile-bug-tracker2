@@ -26,7 +26,8 @@ function TheNavbar({ loggedInUser, setLoggedInUser }) {
     </Nav>
     <Nav>
       <Nav.Link href="">Welcome {loggedInUser.username}</Nav.Link>
-      <Nav.Link href="/">Logout</Nav.Link>
+      <Nav.Link href="/" onClick={logoutUser}>Logout
+      </Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>

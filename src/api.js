@@ -16,6 +16,10 @@ export const getAllBoards = () => {
   return axios.get(`${baseURL}/boards`);
 };
 
+export const addIssue = (issue, projectId) => {
+  return axios.post(`${baseURL}/projects/${projectId}/issues/new`, issue, { withCredentials: true });
+};
+
 export const addProject = (project) => {
   return axios.post(`${baseURL}/projects`, project, { withCredentials: true });
 };
@@ -23,6 +27,9 @@ export const getIssue = (issueId) => {
   return axios.get(`${baseURL}/issues/${issueId}`);
 };
 
+export const getBoard = (boardId) => {
+  return axios.get(`${baseURL}/boards/${boardId}`);
+};
 export const getProject = (projectId) => {
   return axios.get(`${baseURL}/projects/${projectId}`);
 };

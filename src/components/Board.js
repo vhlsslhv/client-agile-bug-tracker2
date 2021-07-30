@@ -8,47 +8,40 @@ import Issue from './issues/Issue';
 class Board extends React.Component {
   render() {
     return (
-      <>
-        <div class="container-fluid">
-          <div class="col-md-12">
-            <h2 class="d-flex justify-content-center">Project Boards</h2>
-            <div style={{ display: "inline-flex" }}>
-              {this.props.boards.map((board) => {
-                return (
-                  <div class="issue-card">
-                    <div class="card-header">
-                      <div class="text-center" key={board._id}>
-                        <NavLink to={`/Boards/${board._id}`}>
+      <div className="container-fluid">
+        <div className="col-md-12">
+          <h2 className="d-flex justify-content-center">Project Boards</h2>
+          <div style={{ display: "inline-flex" }}>
+            {this.props.boards.map((board, index) => {
+              return (
+                <div className="issue-card">
+                  <div className="card-header">
+                    {/* <div className="text-center" key={board._id}>
+                        <h4 to={`/Boards/${board._id}`}>
                           {board.title}
-                        </NavLink>
-                      </div>
-                      <ul class=" justify-content-centerlist-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">
-                          <IssueDrag id="board-1" className="board">
-                            <Issue id="card-1" className="card" draggable="true">
-                              <p>Card one</p>
-                            </Issue>
-                          </IssueDrag></li>
-                        <li class="list-group-item">
-                          <IssueDrag id="board-2" className="board">
-                            <Issue id="card-2" className="card" draggable="true">
-                              <p>Card two</p>
-                            </Issue>
-                          </IssueDrag></li>
-                      </ul>
-                      <div class="card-footer">
-                        <button to={`/Boards/${board._id}`} type="button" class="btn btn-outline-primary">Add a new issue</button>
+                        </h4>
+                      </div> */}
+                    <div className=" justify-content-centerlist-group list-group-flush">
+                      <div className="list-group-title">{board.title}</div>
+                      <div className="list-group-item">
+                        <IssueDrag id="board-1" className="board">
+                          {board.issues.map((issue) => {
+                            return (<div id="card-1" className="card" draggable="true">
+                              <p>{issue.title}</p>
+                            </div>)
+                          })}
+                        </IssueDrag>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+
+            })}
+
           </div>
         </div>
-
-      </>
+      </div>
     );
   }
 }

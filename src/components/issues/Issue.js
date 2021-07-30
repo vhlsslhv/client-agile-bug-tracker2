@@ -3,7 +3,7 @@ import { getProject, deleteProject } from "../../api";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import Board from "../Board";
-import {getAllIssues} from "../../api"
+import {getAllIssues, getAllBoards} from "../../api"
 
 
 /*         id: "",
@@ -19,27 +19,30 @@ import {getAllIssues} from "../../api"
 class Issue extends React.Component {
     state = {
         issues:[],
+        boards:[],
 
     };
 
     async componentDidMount(){
         const response = await getAllIssues();
+        const response2 = await getAllBoards();
         this.setState({
             issues: response.data,
+            boards: [response2.data[0]],
         });
     }
 
     render() {
         return (
             <>
-            <h2>Issues test</h2>
+            {/* <h2>Issues</h2> */}
             <ul>
             {this.state.issues.map((issue) => {
             return (
             <li key={issue._id}>
-                <NavLink to={`/issues/${issue._id}`}>
+                 <NavLink to={`/issues/${issue._id}`}>
                     {issue.title}
-                </NavLink>
+                </NavLink> 
             </li>   
             );
             }

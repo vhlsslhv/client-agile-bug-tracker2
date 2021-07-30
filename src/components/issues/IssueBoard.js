@@ -48,36 +48,36 @@ function IssueBoard({ id, className, draggable, children}) {
                 </div>
 
                 <main className="flexbox">
-
+ 
                 <IssueDrag id="board-1" className="board">
-                    <Issue id="card-1" className="card" draggable="true">
+                     <Issue id="card-1" className="card" draggable="true">
                         <p>Card one</p>
-                    </Issue>
+                    </Issue> 
                 </IssueDrag>
 
-                <IssueDrag id="board-2" className="board">
+                 <IssueDrag id="board-2" className="board">
                     <Issue id="card-2" className="card" draggable="true">
                         <p>Card two</p>
-                    </Issue>
+                    </Issue> 
                 </IssueDrag>
 
                 <IssueDrag id="board-3" className="board">
-                    <Issue id="card-3" className="card" draggable="true">
+                     <Issue id="card-3" className="card" draggable="true">
                         <p>Card three</p>
-                    </Issue>
+                    </Issue> 
                 </IssueDrag>
 
                 <IssueDrag id="board-4" className="board">
                     <Issue id="card-4" className="card" draggable="true">
                         <p>Card four</p>
-                    </Issue>
+                    </Issue> 
                 </IssueDrag>
 
                 <IssueDrag id="board-5" className="board">
-                    <Issue id="card-5" className="card" draggable="true">
+                    {/* <Issue id="card-5" className="card" draggable="true">
                         <p>Card five</p>
-                    </Issue>
-                </IssueDrag>
+                    </Issue>  */}
+                </IssueDrag>  
 
             </main>
 

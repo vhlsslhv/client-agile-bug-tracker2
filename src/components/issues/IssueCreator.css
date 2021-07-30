@@ -1,0 +1,21 @@
+.issue-card-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    /* border: 1px solid orange; */
+}
+.issue-card-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    /* border: 1px solid orange; */
+}
+ .btn-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32rem;
+    /* border: 1px solid orange; */
+} 

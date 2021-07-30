@@ -1,5 +1,5 @@
 import React from "react";
-import { getProject, deleteProject } from "../../api";
+import { getProject, deleteProject, addIssue } from "../../api";
 import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import Board from "../Board";
@@ -12,7 +12,8 @@ class ProjectDetails extends React.Component {
         title: "",
         description: "",
         imageUrl: "",
-        boards: []
+        boards: [],
+        Issue: []
     };
 
 
@@ -28,11 +29,12 @@ class ProjectDetails extends React.Component {
     }
 
 
-    /* handleCreateIssue = async () => {
-        await createIssue(this.state.id);
-        toast.success("Issue deleted.");
-        this.props.history.push("/");
-    }; */
+    /*     handleaddIssue = async () => {
+            await createIssue(this.state.id);
+            toast.success("Issue created.");
+            this.props.history.push("/");
+        }; 
+     */
 
     handleDeleteProject = async () => {
         await deleteProject(this.state.id);
@@ -50,29 +52,22 @@ class ProjectDetails extends React.Component {
                         <div className="col-md-4">
                             <div className="proj-details">
                                 <div class="d-grid gap-3">
-                                    <div class="mx-3 p-1 bg-light border"><h4>Project Name: </h4> <h6>{title}</h6></div>
-                                    <div class="mx-3 p-1 bg-light border"><h4>Project Description: </h4> <h6>{description}</h6></div>
-
+                                    <div class=" mt-3 mx-auto p-1 bg-light border"><h4>Project Name: </h4> <h6>{title}</h6></div>
+                                    <div class="mx-auto p-1 bg-light border"><h4>Project Description: </h4> <h6>{description}</h6></div>
                                 </div>
-
-
                                 {imageUrl && (<img style={{ width: "100px" }} src={imageUrl} alt="project" />)}
+                                <div class="proj-details-buttons d-flex flex-wrap bd-highlight ms-5 mb-3">
+                                    <div class="p-2 bd-highlight">
+                                        <button className="btn btn-outline-secondary" onClick={() => {
+                                            this.props.history.push(`/projects/${id}/edit`);
+                                        }}> Edit project
+                                        </button>
+                                    </div>
+                                    <div class="p-2 bd-highlight">
+                                        <button className="btn btn-outline-danger" onClick={this.handleDeleteProject}>Delete project</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="proj-details-buttons d-flex bd-highlight mb-3">
-                            <div class="ms-auto p-2 bd-highlight">
-                                <button className="btn btn-primary" onClick={this.handleCreateIssue}>Create new issue</button>  
-                            </div> 
-                            <div class="p-2 bd-highlight">
-                                <button className="btn btn-outline-secondary" onClick={() => {
-                                    this.props.history.push(`/projects/${id}/edit`);
-                                    }}> Edit project
-                                </button>
-                            </div>
-                            <div class="p-2 bd-highlight">
-                                <button className="btn btn-outline-danger" onClick={this.handleDeleteProject}>Delete project</button>
-                            </div>
-                           
                         </div>
                     </div>
                 </div>
@@ -86,6 +81,14 @@ class ProjectDetails extends React.Component {
                         </div>
                     </div>
                 </div>
+                <div class="proj-details-buttons d-flex bd-highlight mb-3">
+                    <div class="mx-auto p-2 bd-highlight">
+                        <button type="submit" className="btn btn-primary" onClick={() => {
+                            this.props.history.push(`/issues/new/${this.props.match.params.id}`);
+                        }}>Create new issue
+                        </button>
+                    </div>
+                </div>
             </>
         );
     }
@@ -95,8 +98,3 @@ class ProjectDetails extends React.Component {
 export default ProjectDetails;
 
 
-<div class="d-flex bd-highlight mb-3">
-    <div class="me-auto p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-</div>

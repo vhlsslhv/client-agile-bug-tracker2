@@ -35,10 +35,10 @@ class ListProjects extends React.Component {
                       </NavLink> </h5>
                       {/* <img height="100px" width="100px" src={`/projects/${project._id}/${project.imageUrl}`} class="card-img-top" alt="project logo" /> */}
                       <div className="card-body text-center">
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <p className="card-text">Some project description to go here</p>
                         <div className="card-button">
                           <div className="btn btn-primary">
-                            <a style={{ color: "azure" }} href={`/projects/${project._id}`}>View Issues</a>
+                            <NavLink style={{ color: "azure" }} to={`/projects/${project._id}`}>View Issues</NavLink>
                           </div>
                         </div>
                       </div>

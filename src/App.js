@@ -8,6 +8,7 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Board from "./components/Board";
 import Navbar from 'react-bootstrap/Navbar';
+import AddIssue from '../src/components/issues/AddIssue';
 /* import PrivateRoute from "./components/PrivateRoute"; */
 
 
@@ -75,6 +76,7 @@ class App extends React.Component {
           <Route exact path="/projects/:id" component={ProjectDetails} />
           <Route exact path="/projects/:id/board" component={Board} />
           <Route exact path="/projects/:id/edit" component={UpdateProject} />
+          <Route exact path="/issues/new/:id" component={AddIssue} />
         </Switch>
 
       </>
